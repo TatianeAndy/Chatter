@@ -18,8 +18,6 @@ namespace Chatter.Controllers
         public ActionResult Index()
         {
 
-            
-
             return View(db.Messages.ToList());
         }
 
