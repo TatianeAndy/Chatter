@@ -17,6 +17,9 @@ namespace Chatter.Controllers
         // GET: Messages
         public ActionResult Index()
         {
+
+            
+
             return View(db.Messages.ToList());
         }
 

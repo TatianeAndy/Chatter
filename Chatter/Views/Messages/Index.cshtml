@@ -22,6 +22,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.MessageContent)
         </td>
+        <td>@Html.DisplayFor(modelItem => item.ApplicationUser.Email)</td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.MessageID }) |
             @Html.ActionLink("Details", "Details", new { id=item.MessageID }) |
