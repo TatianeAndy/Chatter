@@ -33,5 +33,7 @@ namespace Chatter.Models
         }
 
         public System.Data.Entity.DbSet<Chatter.Models.Messages> Messages { get; set; }
+
+        public System.Data.Entity.DbSet<Chatter.Models.Procedure> Procedures { get; set; }
     }
 }

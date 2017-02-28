@@ -22,7 +22,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.MessageContent)
         </td>
-        <p>@ViewBag.DisplayName</p>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserEmail)
+        </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.MessageID }) |
             @Html.ActionLink("Details", "Details", new { id=item.MessageID }) |

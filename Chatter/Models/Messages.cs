@@ -12,7 +12,7 @@ namespace Chatter.Models
         [Key]
         public int MessageID { get; set; }
         public string MessageContent { get; set; }
-        
+        public string UserEmail { get; set; }
         
         public virtual ApplicationUser ApplicationUser { get; set; }
 

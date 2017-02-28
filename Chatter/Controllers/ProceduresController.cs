@@ -10,113 +10,107 @@ using Chatter.Models;
 
 namespace Chatter.Controllers
 {
-    public class MessagesController : Controller
+    public class ProceduresController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Messages
+        // GET: Procedures
         public ActionResult Index()
         {
-            return View(db.Messages.ToList());
+            return View(db.Procedures.ToList());
         }
 
-        // GET: Messages/Details/5
+        // GET: Procedures/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Messages messages = db.Messages.Find(id);
-            if (messages == null)
+            Procedure procedure = db.Procedures.Find(id);
+            if (procedure == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.DisplayName = User.Identity.Name;
-            return View(messages);
+            return View(procedure);
         }
 
-        // GET: Messages/Create
+        // GET: Procedures/Create
         public ActionResult Create()
         {
-            
             return View();
         }
 
-        // POST: Messages/Create
+        // POST: Procedures/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MessageID,MessageContent, UserEmail")] Messages messages)
+        public ActionResult Create([Bind(Include = "ID,Email")] Procedure procedure)
         {
-            
             if (ModelState.IsValid)
             {
-
-                db.Messages.Add(messages);
+                db.Procedures.Add(procedure);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            
-            
-            return View(messages);
+
+            return View(procedure);
         }
 
-        // GET: Messages/Edit/5
+        // GET: Procedures/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Messages messages = db.Messages.Find(id);
-            if (messages == null)
+            Procedure procedure = db.Procedures.Find(id);
+            if (procedure == null)
             {
                 return HttpNotFound();
             }
-            return View(messages);
+            return View(procedure);
         }
 
-        // POST: Messages/Edit/5
+        // POST: Procedures/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MessageID,MessageContent,UserEmail")] Messages messages)
+        public ActionResult Edit([Bind(Include = "ID,Email")] Procedure procedure)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(messages).State = EntityState.Modified;
+                db.Entry(procedure).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            
-            return View(messages);
+            return View(procedure);
         }
 
-        // GET: Messages/Delete/5
+        // GET: Procedures/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Messages messages = db.Messages.Find(id);
-            if (messages == null)
+            Procedure procedure = db.Procedures.Find(id);
+            if (procedure == null)
             {
                 return HttpNotFound();
             }
-            return View(messages);
+            return View(procedure);
         }
 
-        // POST: Messages/Delete/5
+        // POST: Procedures/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Messages messages = db.Messages.Find(id);
-            db.Messages.Remove(messages);
+            Procedure procedure = db.Procedures.Find(id);
+            db.Procedures.Remove(procedure);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
