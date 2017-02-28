@@ -17,7 +17,6 @@ namespace Chatter.Controllers
         // GET: Messages
         public ActionResult Index()
         {
-
             return View(db.Messages.ToList());
         }
 
@@ -33,6 +32,7 @@ namespace Chatter.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.DisplayName = User.Identity.Name;
             return View(messages);
         }
 
@@ -51,10 +51,12 @@ namespace Chatter.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 db.Messages.Add(messages);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            
 
             return View(messages);
         }

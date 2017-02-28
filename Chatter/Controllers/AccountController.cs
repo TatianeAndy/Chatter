@@ -167,6 +167,7 @@ namespace Chatter.Controllers
                 }
                 AddErrors(result);
             }
+            ViewBag.UserName = User.Identity.Name;
 
             // If we got this far, something failed, redisplay form
             return View(model);
