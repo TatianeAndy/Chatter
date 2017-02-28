@@ -1,4 +1,4 @@
-﻿@model Chatter.Models.Messages
+﻿@model Chatter.Models.ChatterViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -11,23 +11,34 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.UserEmail)
+            @Html.DisplayNameFor(model => model.Message.UserEmail)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.UserEmail)
+            @Html.DisplayFor(model => model.Message.UserEmail)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.MessageContent)
+            @Html.DisplayNameFor(model => model.Message.MessageContent)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.MessageContent)
+            @Html.DisplayFor(model => model.Message.MessageContent)
         </dd>
 
         <dd>
-            @User.Identity.Name;
-        </dd>
+       
     </dl>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Procedure.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Procedure.Email)
+        </dd>
+        
+    </dl>
+
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.MessageID }) |

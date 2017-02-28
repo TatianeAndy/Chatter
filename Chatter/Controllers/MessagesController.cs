@@ -32,8 +32,22 @@ namespace Chatter.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.DisplayName = User.Identity.Name;
-            return View(messages);
+            //Daniel: We can populate our new view model entity with a linq query. We have a lot of flexibility
+            var viewModel = new ChatterViewModel
+            {
+                //We can reuse the comment form from a couple of lines above
+                Message = messages,
+                //We don't want to pull back all the procedures, just the one with the same priority as our comment
+                Procedure = (from p in db.Procedures
+                             where p.Email == User.Identity.Name
+                             select p).First()
+            };
+
+            //Daniel: We can no longer pass back a comment form. We need to pass back our new view model
+            return View(viewModel);
+
+            // This was was we retunred before
+            //return View(commentFormModel);
         }
 
         // GET: Messages/Create
